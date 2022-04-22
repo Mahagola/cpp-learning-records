@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+class space
+{
+    int x;
+    int y;
+    int z;
+
+public:
+    void getdata(int a, int b, int c);
+    void display();
+    friend void operator++(space &);
+    friend void operator++(space &,int);
+};
+void space::getdata(int a, int b, int c)
+{
+    x = a;
+    y = b;
+    z = c;
+}
+//post increment operator
+void operator++(space & s,int)
+{
+    s.x = s.x++;
+    s.y = s.y++;
+    s.z = s.z++;
+}
+//pre increment operator
+void operator++(space & p)
+{
+    p.x = ++p.x;
+    p.y = ++p.y;
+    p.z = ++p.z;
+}
+void space::display()
+{
+    cout << "X= " << x << endl;
+    cout << "Y= " << y << endl;
+    cout << "Z= " << z << endl;
+}
+int main()
+{
+    space s;
+    s.getdata(12, 45, 12);
+    cout << "S : " << endl;
+    s.display();
+    s++;
+    cout << "S++: " << endl;
+    s.display();
+    cout << "S' : " << endl;
+    s.display();
+    ++s;
+    cout << "++S': " << endl;
+    s.display();
+    return 0;
+}
